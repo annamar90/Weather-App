@@ -165,17 +165,51 @@ setAll();
 
 
 function cityQueryCompleted(response) {
+  updateCityName(response);
+  updateTemps(response);
+  updateHumidity(response);
+  updateWindSpeed(response);
+  updateSunriseTime(response);
+  updateSunsetTime(response);
+}
+
+function updateCityName(response) {
+  let element= document.querySelector("#city");
+  element.innerHTML= response.data.name + " ("+ response.data.sys.country + ")";
+}
+
+function updateTemps(response) {
   let currentText= Math.round(response.data.main.temp).toString() + " °" + units;
   let minText= Math.round(response.data.main.temp_min).toString() + " °" + units;
   let maxText= Math.round(response.data.main.temp_max).toString() + " °" + units;
 
   let currentElement=document.querySelector("#current-temp");
   let minmaxElement=document.querySelector("#minmax-temp");
-  let element= document.querySelector("#city");
-
-  element.innerHTML= response.data.name + " ("+ response.data.sys.country + ")";
+  
   currentElement.innerHTML=currentText;
   minmaxElement.innerHTML=maxText + "/" + minText;
+}
+
+function updateHumidity(response) {
+  let currentElement=document.querySelector("#currentHumidity");
+  currentElement.innerHTML=response.data.main.humidity + "%";
+}
+
+function updateWindSpeed(response) {
+  let currentElement=document.querySelector("#currentWindSpeed");
+  currentElement.innerHTML=response.data.wind.speed + "km/h";
+}
+
+function updateSunriseTime(response) {
+  let currentElement=document.querySelector("#currentSunriseTime");
+  let time=new Date(response.data.sys.sunrise*1000);
+  currentElement.innerHTML=time.getHours()+":"+time.getMinutes();
+}
+
+function updateSunsetTime(response) {
+  let currentElement=document.querySelector("#currentSunsetTime");
+  let time=new Date(response.data.sys.sunset*1000);
+  currentElement.innerHTML=time.getHours()+":"+time.getMinutes();
 }
 
 function getUnitsType() {
