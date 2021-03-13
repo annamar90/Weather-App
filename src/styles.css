@@ -30,7 +30,7 @@ html {
     font-family: Georgia;
     position: relative;
     display: block;
-    font-size: 0.3em;
+    font-size: 1em;
 }
 
 .currenttemperature {
@@ -42,10 +42,7 @@ html {
 
 
 .currenticon {
-    color: white;
-    font-size: 60px;
-    text-align: center;
-    position: relative;
+    width: 6em;
 }
 
 .currentinfo {
@@ -82,7 +79,7 @@ html {
 }
 
 
-.humidityicon, 
+.humidityicon,
 .windspeedicon,
 .sunriseicon,
 .sunseticon {
