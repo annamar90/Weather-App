@@ -1,0 +1,164 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+.background {
+    background-image: url("../images/CloudySky.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
+    padding-top: 1%;
+}
+
+.opacity {
+    background-color: rgba(36, 36, 36, 0.5);
+    height: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: visible;
+}
+
+.currentweather {
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    font-family: Georgia;
+    position: relative;
+    display: block;
+    font-size: 0.3em;
+}
+
+.currenttemperature {
+    color: white;
+    font-family: Georgia;
+    text-align: right;
+    position: relative;
+}
+
+
+.currenticon {
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    position: relative;
+}
+
+.currentinfo {
+    color: white;
+    font-family: Georgia;
+    text-align: left;
+    position: relative;
+}
+
+.tempicon {
+    color: white;
+    font-size: 40px;
+    text-align: right;
+    position: relative;
+    display: inline;
+}
+
+#thermometer {
+    text-decoration: none;
+    color: rgb(0, 140, 255);
+}
+
+.temp-text {
+    display: inline;
+}
+
+.temp-text h3 {
+    display: inline;
+}
+
+
+.humidityicon,
+.windspeedicon,
+.sunriseicon,
+.sunseticon {
+    color: black;
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+
+}
+
+.card-text {
+    font-weight: bold;
+}
+
+.card-group {
+    opacity: 0.7;
+
+}
+
+.italic {
+    font-style: italic;
+}
+
+.advice {
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin-left: 0.75em;
+    margin-right: 0.75em;
+}
+
+.advice-text {
+    color: white;
+    font-family: Georgia;
+    font-style: italic;
+    opacity: 1.0;
+}
+
+.nextdays {
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.daysicon {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+
+.daystemp {
+    font-size: 0.9em;
+}
+
+.input-group {
+    margin: auto;
+    padding-top: 0.6em;
+}
+
+.search-box {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.current-loc {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.signature {
+    color: white;
+    font-style: italic;
+    font-size: 0.5em;
+    position: relative;
+    text-align: center;
+    bottom: 0px;
+    margin: auto;
+    width: 94%;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/styles.css">
+    <script src="https://kit.fontawesome.com/30bbbb4aef.js" crossorigin="anonymous"></script> 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="src/script.js"></script>
+
+    <title>Weather✨</title> 
+</head>
+<body>
+
+<div class="background">
+    <div class="opacity col-sm-10 col-md-10 col-xs-12 col-xl-10 col-lg-10 col-xxl-10">
+        <div class="container">
+            <div class="row">
+                <div class="col ms-auto currentinfo">
+                    <h3 id= "city">Venice</h3>
+                    <h4 id= "time">20:33</h4>
+                    <h5 class="italic" id="date">Sunday, 14th Feb 2021</h5>
+                </div>
+                <div class="col currenticon">
+                    <i class="fas fa-cloud"></i>
+                    <h7 class="currentweather">cloudy</h7>
+                </div>
+                <div class="col me-auto currenttemperature">
+                    <div class="tempicon">
+                        <a href="#" id="thermometer">
+                            <i class="fas fa-thermometer-half"></i>
+                        </a>
+                    </div>
+                    <div class="temp-text">
+                        <h3 id="current-temp">5 °C</h3>
+                        <h5 id="minmax-temp">8 °C/-4 °C</h5>
+                    </div>
+                </div>
+
+            </div>
+
+           
+            <div class="row">
+                <div class="col advice">
+                    
+                    <span class="advice-text">Put on your scarf!</span> 
+                    🧣 
+                </div>
+            </div>
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-header">Humidity</h5>
+                        <div class="humidityicon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                        <p class="card-text">41%</p> 
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-header">Wind Speed</h5>
+                        <div class="windspeedicon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <p class="card-text">10 km/h</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-header">Sunrise</h5>
+                        <div class="sunriseicon">
+                            <i class="far fa-caret-square-up"></i>
+                        </div>
+                        <p class="card-text">07:14 am</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-header">Sunset</h5>
+                        <div class="sunseticon">
+                            <i class="far fa-caret-square-down"></i>
+                        </div>
+                        <p class="card-text">17:36 pm</p>
+                    </div>
+                </div>
+            </div> 
+            
+            
+                
+                <div class="row nextdays">
+                    <div class="col">
+                        <p>Monday</p>
+                        <div class="daysicon day1icon">
+                            <i class="fas fa-cloud-sun"></i>
+                        </div>
+                        <p class="daystemp day1temp">-1°/6°</p>
+                    </div>
+                    <div class="col">
+                        <p>Tuesday</p>
+                        <div class="daysicon day2icon">
+                            <i class="fas fa-cloud-sun"></i>
+                        </div>
+                        <p class="daystemp day2temp">0°/7°</p>
+                    </div>
+                    <div class="col">
+                        <p>Wednesday</p>
+                        <div class="daysicon day3icon">
+                        <i class="fas fa-cloud-sun"></i>
+                        </div>
+                        <p class="daystemp day3temp">5°/7°</p>
+                    </div>
+                    <div class="col">
+                        <p>Thursday</p>
+                        <div class="daysicon day4icon">
+                        <i class="fas fa-cloud"></i>
+                        </div>
+                        <p class="daystemp day4temp">4°/8°</p>
+                    </div>
+                    <div class="col">
+                        <p>Friday</p>
+                        <div class="daysicon day5icon">
+                            <i class="fas fa-cloud-rain"></i>
+                        </div>
+                        <p class="daystemp day5temp">8°/11°</p>
+                    </div>
+                </div>
+            
+    
+                <button class="current-loc btn btn-primary" type="submit" id="buttonloc">Current Location</button>
+
+                <div class="search-box col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12">
+                    <form class="input-group input-group-sm mb-3">
+                        <button class="btn btn-success" type="submit" id="button-addon1">Search City</button>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </form>
+                </div>
+            
+            <div class="signature">
+                <p>Coded by Anna Marasso</p>
+            </div>
+    </div>
+</div>
+<script src="src/script.js"></script>
+</body>
+
+</html>
