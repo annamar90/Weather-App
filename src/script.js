@@ -70,6 +70,7 @@ function setDate() {
 function setAll() {
   setTime();
   setDate();
+  getCurrentPosition();
 }
 
 function searchCity (event) {
@@ -172,7 +173,7 @@ function cityQueryCompleted(response) {
   let minmaxElement=document.querySelector("#minmax-temp");
   let element= document.querySelector("#city");
 
-  element.innerHTML= response.data.name;
+  element.innerHTML= response.data.name + " ("+ response.data.sys.country + ")";
   currentElement.innerHTML=currentText;
   minmaxElement.innerHTML=maxText + "/" + minText;
 }
