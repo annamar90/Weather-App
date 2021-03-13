@@ -166,6 +166,7 @@ setAll();
 
 function cityQueryCompleted(response) {
   updateCityName(response);
+  updateCurrentTime(response);
   updateTemps(response);
   updateHumidity(response);
   updateWindSpeed(response);
@@ -176,6 +177,19 @@ function cityQueryCompleted(response) {
 function updateCityName(response) {
   let element= document.querySelector("#city");
   element.innerHTML= response.data.name + " ("+ response.data.sys.country + ")";
+}
+
+function updateCurrentTime(response) {
+  let element=document.querySelector("#time");
+
+  if(element===null) {
+    return;
+  }
+
+  let time=new Date();
+  time=time.getTime()/1000;
+
+  element.innerHTML= timestampToStr(time, response.data.timezone);
 }
 
 function updateTemps(response) {
@@ -202,14 +216,23 @@ function updateWindSpeed(response) {
 
 function updateSunriseTime(response) {
   let currentElement=document.querySelector("#currentSunriseTime");
-  let time=new Date(response.data.sys.sunrise*1000);
-  currentElement.innerHTML=time.getHours()+":"+time.getMinutes();
+  currentElement.innerHTML=timestampToStr(response.data.sys.sunrise, response.data.timezone);
 }
 
 function updateSunsetTime(response) {
   let currentElement=document.querySelector("#currentSunsetTime");
-  let time=new Date(response.data.sys.sunset*1000);
-  currentElement.innerHTML=time.getHours()+":"+time.getMinutes();
+  currentElement.innerHTML=timestampToStr(response.data.sys.sunset, response.data.timezone);
+}
+
+function timestampToStr(timestamp, timezone) {
+  let time=new Date((timestamp+timezone)*1000);
+  let minutes=time.getUTCMinutes().toString();
+
+  if(minutes.length<2) {
+    minutes="0"+minutes;
+  }
+
+  return time.getUTCHours()+":"+minutes;
 }
 
 function getUnitsType() {
