@@ -65,7 +65,12 @@ html {
 
 #thermometer {
     text-decoration: none;
-    color: rgb(0, 140, 255);
+    color: #94ebcd;
+}
+
+#thermometer:hover {
+    color: #ee9595;
+    transition: 0.3s;
 }
 
 .temp-text {
@@ -142,14 +147,9 @@ html {
     padding-top: 0.6em;
 }
 
-.search-box {
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .current-loc {
-    margin-left: 50%;
-    transform: translateX(-50%);
+    display: inline;
+
 }
 
 .signature {
@@ -168,4 +168,11 @@ html {
     font-style: normal;
     font-size: 1em;
     text-decoration: none;
+}
+
+#buttonloc {
+    margin-top: 0.65em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    font-size: 0.9em;
 }
