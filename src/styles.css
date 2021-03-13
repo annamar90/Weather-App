@@ -162,3 +162,10 @@ html {
     margin: auto;
     width: 94%;
 }
+
+#githublink {
+    color: rgb(0, 189, 25);
+    font-style: normal;
+    font-size: 1em;
+    text-decoration: none;
+}
