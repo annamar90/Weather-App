@@ -62,11 +62,11 @@ html {
 
 #thermometer {
     text-decoration: none;
-    color: #94ebcd;
+    color: #26a3b9;
 }
 
 #thermometer:hover {
-    color: #ee9595;
+    color: #c29b19;
     transition: 0.3s;
 }
 
