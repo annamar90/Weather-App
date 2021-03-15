@@ -168,6 +168,7 @@ function cityQueryCompleted(response) {
   updateCityName(response);
   updateCurrentTime(response);
   updateTemps(response);
+  updateWeatherStatus(response);
   updateHumidity(response);
   updateWindSpeed(response);
   updateSunriseTime(response);
@@ -202,6 +203,136 @@ function updateTemps(response) {
   
   currentElement.innerHTML=currentText;
   minmaxElement.innerHTML=maxText + "/" + minText;
+}
+
+function updateWeatherStatus(response) {
+  let currentWeatherIcon=document.querySelector("#currentWeatherIcon");
+  let currentWeatherDesc=document.querySelector("#currentWeatherDesc"); 
+
+  let statusDescription=response.data.weather[0].description;
+  
+  updateIcon(response, currentWeatherIcon);
+  changeDescription(currentWeatherDesc, statusDescription);
+}
+
+function updateIcon(response, element) {
+  let status=response.data.weather[0].id;
+  let statusGroup=parseInt(status.toString()[0]);
+
+  switch(statusGroup) {
+    case 2: 
+      changeIcon(element, "041-thunderstorm.svg");
+      break;
+
+    case 3:
+      changeIcon(element, "046-weather.svg");
+      break;
+    
+    case 5:
+      switch(status) {
+        case 500:
+        case 501:
+        case 520:
+          changeIcon(element, "046-weather.svg");
+          break;
+        
+        case 502:
+        case 503:
+        case 504:
+        case 522:
+        case 531:
+          changeIcon(element, "027-rain.svg");
+          break;
+        
+        case 521:
+          changeIcon(element, "005-rainbow.svg");
+          break;
+        
+        case 511:
+          changeIcon(element, "029-raindrop.svg");
+          break; 
+      }
+      break;
+
+    case 6:
+      switch(status) {
+        case 600:
+          changeIcon(element, "032-snowy.svg");
+          break;
+        
+        case 601:
+        case 602:
+          changeIcon(element, "033-snowy.svg");
+          break;
+        
+        case 611:
+        case 612:
+        case 613:
+          changeIcon(element, "015-hail.svg");
+          break;
+        
+        case 621:
+        case 622:
+        case 615:
+        case 616:
+          changeIcon(element, "030-snow.svg");
+          break;
+
+      }
+      break;
+
+    case 7:
+      switch(status) {
+        case 781:
+          changeIcon(element, "042-tornado.svg");
+          break;
+        
+        default:
+          changeIcon(element, "016-haze.svg");
+          break;
+      }
+      break;
+
+    case 8:
+      switch(status) {
+        case 800:
+          changeIcon(element, "036-sun.svg");
+          break;
+
+        case 801:
+        case 802:
+          changeIcon(element, "007-cloudy day.svg");
+          break;
+        
+        case 803:
+          changeIcon(element, "006-cloudy.svg");
+          break;
+
+        case 804:
+          changeIcon(element, "004-clouds.svg");
+          break;
+      }
+      break;
+    
+    default:
+      break;
+  }
+}
+
+function changeIcon(element, icon) {
+  if(element===null) {
+    return;
+  }
+
+  element.setAttribute("src", "icons/"+icon);
+}
+
+function changeDescription(element, description) {
+  if(element===null) {
+    return;
+  }
+
+  element.innerHTML=description;
 }
 
 function updateHumidity(response) {
