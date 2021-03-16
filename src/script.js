@@ -67,9 +67,25 @@ function setDate() {
   element.innerHTML= currentDate();
 }
 
+function setDaysNames() {
+  const names=["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const todayNumber=new Date().getDay();
+
+  let daysElements=[];
+
+  for(let k=0; k<5; ++k) {
+    daysElements.push(document.querySelector("#day"+k));
+  }
+
+  daysElements.forEach((element, dayNumber)=>{
+    element.innerHTML=names[(todayNumber+dayNumber+1)%7];
+  });
+}
+
 function setAll() {
   setTime();
   setDate();
+  setDaysNames();
   getCurrentPosition();
 }
 
