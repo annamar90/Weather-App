@@ -118,8 +118,9 @@ html {
 
 .nextdays {
     color: white;
+    font-family: Georgia;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.1em;
     background-color: rgba(0, 0, 0, 0.3);
     margin-top: 1em;
     margin-left: auto;
@@ -131,7 +132,9 @@ html {
 }
 
 .daystemp {
-    font-size: 0.9em;
+    margin-top:0.5em;
+    font-size: 0.7em;
+    font-family: Verdana;
 }
 
 .input-group {
