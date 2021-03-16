@@ -73,7 +73,7 @@ function setDaysNames() {
 
   let daysElements=[];
 
-  for(let k=0; k<5; ++k) {
+  for(let k=0; k<4; ++k) {
     daysElements.push(document.querySelector("#day"+k));
   }
 
@@ -189,6 +189,27 @@ function cityQueryCompleted(response) {
   updateWindSpeed(response);
   updateSunriseTime(response);
   updateSunsetTime(response);
+
+  retrieveWeekForecast(response.data.name);
+}
+
+function retrieveWeekForecastCompleted(response) {
+  if(response.data.cnt<40)
+  {
+    return
+  }
+
+  let forecasts=[
+    response.data.list[8],
+    response.data.list[16],
+    response.data.list[24],
+    response.data.list[32]
+  ]
+
+  forecasts.forEach((forecast, number)=>{
+    let element=document.querySelector("#day"+number+"WeatherIcon");
+    updateIcon(forecast.weather, element);
+  })
 }
 
 function updateCityName(response) {
@@ -227,12 +248,12 @@ function updateWeatherStatus(response) {
 
   let statusDescription=response.data.weather[0].description;
   
-  updateIcon(response, currentWeatherIcon);
+  updateIcon(response.data.weather, currentWeatherIcon);
   changeDescription(currentWeatherDesc, statusDescription);
 }
 
-function updateIcon(response, element) {
-  let status=response.data.weather[0].id;
+function updateIcon(weather, element) {
+  let status=weather[0].id;
   let statusGroup=parseInt(status.toString()[0]);
 
   switch(statusGroup) {
@@ -393,7 +414,6 @@ function getUnitsType() {
   }
 }
 
-
 function cityQuery(cityName) {
   let apiUrl= "https://api.openweathermap.org/data/2.5/weather?";
   let apiKey= "f8ea34379b91acbd2b4566022d7f64a7";
@@ -401,6 +421,15 @@ function cityQuery(cityName) {
 
   let cityUrl= apiUrl + "q=" + cityName + "&units=" + apiUnits + "&appid=" + apiKey;
   axios.get(cityUrl).then(cityQueryCompleted);
+}
+
+function retrieveWeekForecast(cityName) {
+  let apiUrl= "https://api.openweathermap.org/data/2.5/forecast?";
+  let apiKey= "f8ea34379b91acbd2b4566022d7f64a7";
+  let apiUnits=getUnitsType();
+
+  let cityUrl= apiUrl + "q=" + cityName + "&units=" + apiUnits + "&appid=" + apiKey;
+  axios.get(cityUrl).then(retrieveWeekForecastCompleted);
 }
 
 function addCurrentLocationEvent() {
