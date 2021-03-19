@@ -162,6 +162,38 @@ function changeDegrees() {
 
   currentElement.innerHTML=currentText;
   minmaxElement.innerHTML=maxText + "/" + minText;
+
+  for(let k=0; k<4; ++k)
+  {
+    let el=document.querySelector("#tempDay"+k);
+
+    maxText=el.innerHTML.split("/")[0];
+    minText=el.innerHTML.split("/")[1];
+
+    maxTemp=maxText.replace(" °"+prevMode, "");
+    minTemp=minText.replace(" °"+prevMode, "");
+
+    if(prevMode==="C") {
+      maxTemp=(maxTemp * (9/5)) + 32;
+      minTemp=(minTemp * (9/5)) + 32;
+    }
+    else {
+      maxTemp=(maxTemp - 32) * (5/9);
+      minTemp=(minTemp - 32) * (5/9);
+    }
+
+    maxText= Math.round(maxTemp).toString() + " °" + newMode;
+    minText= Math.round(minTemp).toString() + " °" + newMode;
+
+    el.innerHTML=maxText + "/" + minText;
+  }
+}
+
+function updateWeekTemp(element, info) {
+  maxText= Math.round(info.temp_max).toString() + " °" + units;
+  minText= Math.round(info.temp_min).toString() + " °" + units;
+
+  element.innerHTML=maxText+" / "+minText;
 }
 
 function addThermometerEvent() {
@@ -209,8 +241,11 @@ function retrieveWeekForecastCompleted(response) {
   forecasts.forEach((forecast, number)=>{
     let element=document.querySelector("#day"+number+"WeatherIcon");
     let element1=document.querySelector("#descriptionDay"+number);
+    let element2=document.querySelector("#tempDay"+number);
+
     updateIcon(forecast.weather, element);
     changeDescription(element1, forecast.weather[0].description);
+    updateWeekTemp(element2, forecast.main);
   })
 }
 
