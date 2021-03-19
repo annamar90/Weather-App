@@ -208,7 +208,9 @@ function retrieveWeekForecastCompleted(response) {
 
   forecasts.forEach((forecast, number)=>{
     let element=document.querySelector("#day"+number+"WeatherIcon");
+    let element1=document.querySelector("#descriptionDay"+number);
     updateIcon(forecast.weather, element);
+    changeDescription(element1, forecast.weather[0].description);
   })
 }
 
