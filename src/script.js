@@ -213,6 +213,7 @@ setAll();
 
 
 function cityQueryCompleted(response) {
+  updateBackgroundImage(response);
   updateCityName(response);
   updateCurrentTime(response);
   updateTemps(response);
@@ -247,6 +248,13 @@ function retrieveWeekForecastCompleted(response) {
     changeDescription(element1, forecast.weather[0].description);
     updateWeekTemp(element2, forecast.main);
   })
+}
+
+function updateBackgroundImage(response) {
+  let element= document.querySelector("#container");
+  let path= "images/windy beach.jpg";
+  element.style.backgroundImage="url('"+ path +"')";
+
 }
 
 function updateCityName(response) {
