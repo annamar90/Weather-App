@@ -213,7 +213,7 @@ setAll();
 
 
 function cityQueryCompleted(response) {
-  updateBackgroundImage(response);
+  
   updateCityName(response);
   updateCurrentTime(response);
   updateTemps(response);
@@ -244,17 +244,17 @@ function retrieveWeekForecastCompleted(response) {
     let element1=document.querySelector("#descriptionDay"+number);
     let element2=document.querySelector("#tempDay"+number);
 
-    updateIcon(forecast.weather, element);
+    updateIcon(forecast.weather, element, false);
     changeDescription(element1, forecast.weather[0].description);
     updateWeekTemp(element2, forecast.main);
   })
 }
 
-function updateBackgroundImage(response) {
+function updateBackgroundImage(imageName) {
   let element= document.querySelector("#container");
-  let path= "images/windy beach.jpg";
-  element.style.backgroundImage="url('"+ path +"')";
+  let path= "images/"+imageName;
 
+  element.style.backgroundImage="url('"+ path +"')";
 }
 
 function updateCityName(response) {
@@ -293,21 +293,28 @@ function updateWeatherStatus(response) {
 
   let statusDescription=response.data.weather[0].description;
   
-  updateIcon(response.data.weather, currentWeatherIcon);
+  updateIcon(response.data.weather, currentWeatherIcon, true);
   changeDescription(currentWeatherDesc, statusDescription);
 }
 
-function updateIcon(weather, element) {
+function updateIcon(weather, element, isCurrent) {
   let status=weather[0].id;
   let statusGroup=parseInt(status.toString()[0]);
 
   switch(statusGroup) {
     case 2: 
       changeIcon(element, "041-thunderstorm.svg");
+
+      if(isCurrent) {
+        updateBackgroundImage("Thunderstorm.jpg");
+      }
       break;
 
     case 3:
       changeIcon(element, "046-weather.svg");
+       if(isCurrent) {
+        updateBackgroundImage("Shower Rain.jpg");
+      }
       break;
     
     case 5:
@@ -316,6 +323,9 @@ function updateIcon(weather, element) {
         case 501:
         case 520:
           changeIcon(element, "046-weather.svg");
+          if(isCurrent) {
+            updateBackgroundImage("Shower Rain.jpg");
+          }
           break;
         
         case 502:
@@ -324,14 +334,23 @@ function updateIcon(weather, element) {
         case 522:
         case 531:
           changeIcon(element, "027-rain.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Rain.jpg");
+          }
           break;
         
         case 521:
           changeIcon(element, "005-rainbow.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Rainbow.jpg");
+          }
           break;
         
         case 511:
           changeIcon(element, "029-raindrop.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Raindrop.jpg");
+          }
           break; 
       }
       break;
@@ -340,17 +359,26 @@ function updateIcon(weather, element) {
       switch(status) {
         case 600:
           changeIcon(element, "032-snowy.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Snowy Mountains.jpg");
+          }
           break;
         
         case 601:
         case 602:
           changeIcon(element, "033-snowy.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Snowy woods.jpeg");
+          }
           break;
         
         case 611:
         case 612:
         case 613:
           changeIcon(element, "015-hail.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Hail.jpg");
+          }
           break;
         
         case 621:
@@ -358,6 +386,9 @@ function updateIcon(weather, element) {
         case 615:
         case 616:
           changeIcon(element, "030-snow.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Snow top.jpg");
+          }
           break;
 
       }
@@ -367,10 +398,16 @@ function updateIcon(weather, element) {
       switch(status) {
         case 781:
           changeIcon(element, "042-tornado.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Tornado.jpg");
+          }
           break;
         
         default:
           changeIcon(element, "016-haze.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Misty woods.jpg");
+          }
           break;
       }
       break;
@@ -379,19 +416,31 @@ function updateIcon(weather, element) {
       switch(status) {
         case 800:
           changeIcon(element, "036-sun.svg");
+          if(isCurrent) {
+        updateBackgroundImage("sunny poppies.jpg");
+          }
           break;
 
         case 801:
         case 802:
           changeIcon(element, "007-cloudy day.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Scattered Clouds.jpg");
+          }
           break;
         
         case 803:
           changeIcon(element, "006-cloudy.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Cloudy valley.jpg");
+          }
           break;
 
         case 804:
           changeIcon(element, "004-clouds.svg");
+          if(isCurrent) {
+        updateBackgroundImage("Broken Clouds.jpg");
+          }
           break;
       }
       break;
