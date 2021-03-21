@@ -241,6 +241,41 @@ function retrieveWeekForecastCompleted(response) {
     response.data.list[32]
   ]
 
+  let minTemps=new Array(forecasts.length).fill(Number.MAX_VALUE);
+  let maxTemps=new Array(forecasts.length).fill(Number.MIN_VALUE);
+  let days=[];
+
+  for(let k=0, kMax=response.data.cnt; k<kMax; ++k)
+  {
+    const item=response.data.list[k];
+    const dt_txt=item.dt_txt;
+    const data=dt_txt.split(" ")[0];
+
+    if(days.includes(data)===false)
+    {
+      days.push(data);
+    }
+
+    if(days.length<2)
+    {
+      continue;
+    }
+
+    const currentDay=days.length-2;
+    const dayMin=parseFloat(item.main.temp_min);
+    const dayMax=parseFloat(item.main.temp_max);
+
+    if(dayMin<minTemps[currentDay])
+    {
+      minTemps[currentDay]=dayMin;
+    }
+
+    if(dayMax>maxTemps[currentDay])
+    {
+      maxTemps[currentDay]=dayMax;
+    }
+  }
+
   forecasts.forEach((forecast, number)=>{
     let element=document.querySelector("#day"+number+"WeatherIcon");
     let element1=document.querySelector("#descriptionDay"+number);
@@ -248,7 +283,14 @@ function retrieveWeekForecastCompleted(response) {
 
     updateIcon(forecast.weather, element, false);
     changeDescription(element1, forecast.weather[0].description);
-    updateWeekTemp(element2, forecast.main);
+
+    const info=
+    {
+      temp_min: minTemps[number],
+      temp_max: maxTemps[number],
+    };
+
+    updateWeekTemp(element2, info);
   })
 }
 
