@@ -93,8 +93,10 @@ function searchCity (event) {
   event.preventDefault();
   let input= document.querySelector("input");
   let element= document.querySelector("#city");
-  element.innerHTML= input.value
-  cityQuery(input.value);
+  let inputValue=input.value;
+  element.innerHTML= inputValue;
+  input.value="";
+  cityQuery(inputValue);
 
 }
 
