@@ -111,10 +111,24 @@ html {
 }
 
 .advice-text {
-    color: white;
+    color: #19d3da;
     font-family: Georgia;
-    font-style: italic;
+    font-style: normal;
     opacity: 1.0;
+    text-decoration: none;
+}
+
+.advice-text:hover {
+    color: #19d3da;
+    transition: 0.3s;
+    font-style: italic;
+}
+
+#adviceIcon {
+    font-family: Georgia;
+    font-style: normal;
+    opacity: 1.0;
+    text-decoration: none;
 }
 
 .nextdays {

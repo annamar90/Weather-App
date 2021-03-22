@@ -341,6 +341,14 @@ function updateWeatherStatus(response) {
   changeDescription(currentWeatherDesc, statusDescription);
 }
 
+function updateTips(text, icon, link) {
+  let element= document.querySelector("#adviceLink");
+  let iconElement= document.querySelector("#adviceIcon");
+  element.setAttribute("href", link);
+  element.innerHTML=text;
+  iconElement.textContent=icon;
+}
+
 function updateIcon(weather, element, isCurrent) {
   let status=weather[0].id;
   let statusGroup=parseInt(status.toString()[0]);
@@ -351,13 +359,20 @@ function updateIcon(weather, element, isCurrent) {
 
       if(isCurrent) {
         updateBackgroundImage("Thunderstorm.jpg");
+        updateTips("Click me and check out some useful Lightning Safety tips!",
+                        "⚡👍",
+                        "https://www.nationalgeographic.com/environment/article/lightning-safety-tips");
+        
       }
       break;
 
     case 3:
       changeIcon(element, "046-weather.svg");
        if(isCurrent) {
-        updateBackgroundImage("Shower Rain.jpg");
+        updateBackgroundImage("Spiderweb2.jpg");
+        updateTips("Click me and discover the beauty of Rain in art!",
+                        "🌂🎨",
+                        "https://artgallery.co.uk/blog/post/2017/01/06/capturing-the-beauty-of-the-rain-in-art");
       }
       break;
     
@@ -368,7 +383,10 @@ function updateIcon(weather, element, isCurrent) {
         case 520:
           changeIcon(element, "046-weather.svg");
           if(isCurrent) {
-            updateBackgroundImage("Shower Rain.jpg");
+            updateBackgroundImage("Spiderweb2.jpg");
+            updateTips("Click me and discover the beauty of Rain in art!",
+                        "🌂🎨",
+                        "https://artgallery.co.uk/blog/post/2017/01/06/capturing-the-beauty-of-the-rain-in-art");
           }
           break;
         
@@ -380,6 +398,9 @@ function updateIcon(weather, element, isCurrent) {
           changeIcon(element, "027-rain.svg");
           if(isCurrent) {
         updateBackgroundImage("Rain.jpg");
+         updateTips("Click me and remember to drive safely in the rain!",
+                        "🚙☔",
+                        "https://driving-tests.org/beginner-drivers/how-to-drive-in-rain/");
           }
           break;
         
@@ -387,6 +408,9 @@ function updateIcon(weather, element, isCurrent) {
           changeIcon(element, "005-rainbow.svg");
           if(isCurrent) {
         updateBackgroundImage("Rainbow.jpg");
+         updateTips("Click me and discover 17 awesome facts about Rainbows!",
+                        "🌈💡",
+                        "https://www.treehugger.com/curious-things-know-about-rainbows-4858620");
           }
           break;
         
@@ -394,6 +418,9 @@ function updateIcon(weather, element, isCurrent) {
           changeIcon(element, "029-raindrop.svg");
           if(isCurrent) {
         updateBackgroundImage("Raindrop.jpg");
+           updateTips("Click me and find out how freezing rain forms!",
+                        "💧❓",
+                        "https://earthsky.org/earth/all-about-freezing-rain");
           }
           break; 
       }
@@ -443,14 +470,20 @@ function updateIcon(weather, element, isCurrent) {
         case 781:
           changeIcon(element, "042-tornado.svg");
           if(isCurrent) {
-        updateBackgroundImage("Tornado.jpg");
+            updateBackgroundImage("Tornado.jpg");
+            updateTips("Click me and learn ways you can protect your family and home!",
+                        "🌀🏠",
+                        "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/tornado.html");
           }
           break;
         
         default:
           changeIcon(element, "016-haze.svg");
           if(isCurrent) {
-        updateBackgroundImage("Misty woods.jpg");
+            updateBackgroundImage("Misty woods.jpg");
+            updateTips("Click me and remember to ride safely!",
+                        "🚲👀",
+                        "https://www.bicycling.com/bikes-gear/g20017365/the-science-of-being-seen-a-guide-to-safer-riding/");
           }
           break;
       }
@@ -462,6 +495,9 @@ function updateIcon(weather, element, isCurrent) {
           changeIcon(element, "036-sun.svg");
           if(isCurrent) {
         updateBackgroundImage("sunny poppies.jpg");
+         updateTips("Click me and safely enjoy your day in the Sun!",
+                        "🌞🔺",
+                        "https://careinthesun.org/sun-protection/ways-to-enjoy-the-sun-safely/");
           }
           break;
 
@@ -469,21 +505,30 @@ function updateIcon(weather, element, isCurrent) {
         case 802:
           changeIcon(element, "007-cloudy day.svg");
           if(isCurrent) {
-        updateBackgroundImage("Scattered Clouds.jpg");
+            updateBackgroundImage("Scattered Clouds.jpg");
+                updateTips("Click me and learn how to recognize clouds!",
+                        "⛅🔎",
+                        "https://www.thoughtco.com/types-of-clouds-recognize-in-the-sky-4025569");
           }
           break;
         
         case 803:
           changeIcon(element, "006-cloudy.svg");
           if(isCurrent) {
-        updateBackgroundImage("Cloudy valley.jpg");
+            updateBackgroundImage("Cloudy valley.jpg");
+              updateTips("Click me and get inspired by these quotes!",
+                        "⛅📚",
+                        "https://resilientblog.co/inspirational/quotes-about-clouds/");
           }
           break;
 
         case 804:
           changeIcon(element, "004-clouds.svg");
           if(isCurrent) {
-        updateBackgroundImage("Broken Clouds.jpg");
+            updateBackgroundImage("Broken Clouds.jpg");
+              updateTips("Click me and get your playlist for cloudy days!",
+                        "⛅🎶",
+                        "https://www.theodysseyonline.com/an-ode-to-overcast");
           }
           break;
       }
