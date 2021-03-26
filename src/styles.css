@@ -1,11 +1,13 @@
 body,
 html {
+    min-height: 100%;
     height: 100%;
     margin: 0;
 }
 
 .background {
     background-image: url("../images/CloudySky.jpg");
+    min-height: 100%;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;

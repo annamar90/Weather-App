@@ -92,9 +92,7 @@ function setAll() {
 function searchCity (event) {
   event.preventDefault();
   let input= document.querySelector("input");
-  let element= document.querySelector("#city");
   let inputValue=input.value;
-  element.innerHTML= inputValue;
   input.value="";
   cityQuery(inputValue);
 
@@ -603,7 +601,7 @@ function cityQuery(cityName) {
   let apiUnits=getUnitsType();
 
   let cityUrl= apiUrl + "q=" + cityName + "&units=" + apiUnits + "&appid=" + apiKey;
-  axios.get(cityUrl).then(cityQueryCompleted);
+  axios.get(cityUrl).then(cityQueryCompleted).catch(()=>alert("Sorry, city not found 😕 Please, check and retry."));
 }
 
 function retrieveWeekForecast(cityName) {
