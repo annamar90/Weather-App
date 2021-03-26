@@ -430,9 +430,6 @@ function updateIcon(weather, element, isCurrent) {
           changeIcon(element, "032-snowy.svg");
           if(isCurrent) {
         updateBackgroundImage("Snowy Mountains.jpg");
-            updateTips("Click me and make yourself a healthy, warm drink!",
-            "☕😊",
-            "https://www.ndtv.com/health/choose-these-healthy-drinks-to-stay-warm-this-winter-2327052");
           }
           break;
         
@@ -441,9 +438,6 @@ function updateIcon(weather, element, isCurrent) {
           changeIcon(element, "033-snowy.svg");
           if(isCurrent) {
         updateBackgroundImage("Snowy woods.jpeg");
-            updateTips("Click me and have a look at these cool facts about Snow!",
-            "🤓⛄",
-            "https://www.bbcearth.com/blog/?article=surprising-facts-about-snow");
           }
           break;
         
@@ -453,9 +447,6 @@ function updateIcon(weather, element, isCurrent) {
           changeIcon(element, "015-hail.svg");
           if(isCurrent) {
         updateBackgroundImage("Hail.jpg");
-            updateTips("Click me and see how to protect your car from hail damage!",
-            "🚗🔺",
-            "https://www.progressive.com/lifelanes/on-the-road/protect-car-from-hail/");
           }
           break;
         
@@ -466,9 +457,6 @@ function updateIcon(weather, element, isCurrent) {
           changeIcon(element, "030-snow.svg");
           if(isCurrent) {
         updateBackgroundImage("Snow top.jpg");
-            updateTips("Click me and have a look at this useful emergency checklist!",
-            "📑⛄",
-            "https://www.theaa.com/driving-advice/seasonal/winter-checklist");
           }
           break;
 
